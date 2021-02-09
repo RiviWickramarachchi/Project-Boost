@@ -7,6 +7,13 @@ public class Rocket : MonoBehaviour
 {
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 100f;
+    [SerializeField] AudioClip mainEngine;
+    [SerializeField] AudioClip engineTurnedOff;
+    [SerializeField] AudioClip crashSound;
+    [SerializeField] AudioClip success;
+
+
+
     Rigidbody rigidbody;
     AudioSource rocketShipAudioSource;
 
@@ -32,7 +39,7 @@ public class Rocket : MonoBehaviour
         }
         else
         {
-          rocketShipAudioSource.Stop();
+          //rocketShipAudioSource.Stop();
         }
 
     }
@@ -53,11 +60,15 @@ public class Rocket : MonoBehaviour
         case "Finish":
           print("Hit Finish");
           state = State.Transcending;
+          rocketShipAudioSource.Stop();
+          rocketShipAudioSource.PlayOneShot(success);
           Invoke("loadNextLevel",1f);
           break;
         default:
           print("Dead");
           state = State.Dying;
+          rocketShipAudioSource.Stop();
+          rocketShipAudioSource.PlayOneShot(crashSound);
           Invoke("restartLevel",1f);
           break;
           //blast the rocket
@@ -89,7 +100,7 @@ public class Rocket : MonoBehaviour
         rigidbody.AddRelativeForce(Vector3.up * rocketUpThrust);
         if(!rocketShipAudioSource.isPlaying)
         {
-          rocketShipAudioSource.Play();
+          rocketShipAudioSource.PlayOneShot(mainEngine);
         }
 
       }
