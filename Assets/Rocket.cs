@@ -7,10 +7,15 @@ public class Rocket : MonoBehaviour
 {
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 100f;
+
     [SerializeField] AudioClip mainEngine;
     [SerializeField] AudioClip engineTurnedOff;
     [SerializeField] AudioClip crashSound;
     [SerializeField] AudioClip success;
+
+    [SerializeField] ParticleSystem mainEngineParticles;
+    [SerializeField] ParticleSystem successParticles;
+    [SerializeField] ParticleSystem crashParticles;
 
 
 
@@ -62,6 +67,8 @@ public class Rocket : MonoBehaviour
           state = State.Transcending;
           rocketShipAudioSource.Stop();
           rocketShipAudioSource.PlayOneShot(success);
+          successParticles.Play();
+          mainEngineParticles.Stop();
           Invoke("loadNextLevel",1f);
           break;
         default:
@@ -69,6 +76,8 @@ public class Rocket : MonoBehaviour
           state = State.Dying;
           rocketShipAudioSource.Stop();
           rocketShipAudioSource.PlayOneShot(crashSound);
+          crashParticles.Play();
+          mainEngineParticles.Stop();
           Invoke("restartLevel",1f);
           break;
           //blast the rocket
@@ -102,11 +111,14 @@ public class Rocket : MonoBehaviour
         {
           rocketShipAudioSource.PlayOneShot(mainEngine);
         }
+        mainEngineParticles.Play();
+
 
       }
       else
       {
         rocketShipAudioSource.Stop();
+        mainEngineParticles.Stop();
       }
     }
     private void rotate()
