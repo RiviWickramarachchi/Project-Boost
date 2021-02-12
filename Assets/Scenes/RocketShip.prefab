@@ -166,10 +166,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rcsThrust: 200
   mainThrust: 75
-  mainEngine: {fileID: 8300000, guid: fcf3fd0b9c7f66e408b17f4f9c3e30c5, type: 3}
+  levelLoadDelay: 3
+  mainEngine: {fileID: 8300000, guid: 7b549effa9d02214b85e9ddc974d66b1, type: 3}
   engineTurnedOff: {fileID: 8300000, guid: 2da4a79139a682343b8debbb240ef843, type: 3}
-  crashSound: {fileID: 8300000, guid: 455b146e328decc47beef4b48a6105aa, type: 3}
-  success: {fileID: 8300000, guid: a3a063830ba3af140896051ce008206e, type: 3}
+  crashSound: {fileID: 8300000, guid: 2ca7b8d701ad7aa438f4c33aaf4c31ce, type: 3}
+  success: {fileID: 8300000, guid: a33db744ff6793f46817c4aa910f6082, type: 3}
   mainEngineParticles: {fileID: 9121786669003669453}
   successParticles: {fileID: 315503603771524239}
   crashParticles: {fileID: 7615381552427326528}
