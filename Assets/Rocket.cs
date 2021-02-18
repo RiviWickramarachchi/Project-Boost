@@ -111,7 +111,7 @@ public class Rocket : MonoBehaviour
       print(nextSceneIndex);
       if(nextSceneIndex == numberOfScenesInGame)
       {
-      
+
         restartLevel();
       }
       else
@@ -146,7 +146,7 @@ public class Rocket : MonoBehaviour
     private void rotate()
     {
       float rocketRotation = rcsThrust * Time.deltaTime;
-      rigidbody.freezeRotation = true; //take manual control of rotation
+      rigidbody.angularVelocity = Vector3.zero; //remove rotation due to physics 
 
       if(Input.GetKey(KeyCode.A))
       {
@@ -157,7 +157,7 @@ public class Rocket : MonoBehaviour
         transform.Rotate(Vector3.right * rocketRotation);
       }
 
-      rigidbody.freezeRotation = false; //set rotation back to natural physics
+
     }
 
     private void respondToDebugKeys()
