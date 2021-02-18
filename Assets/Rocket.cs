@@ -103,7 +103,23 @@ public class Rocket : MonoBehaviour
     }
     private void loadNextLevel()
     {
-      SceneManager.LoadScene(1);
+      int numberOfScenesInGame = SceneManager.sceneCountInBuildSettings; //4
+      int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; //0
+      print(currentSceneIndex);
+      print(numberOfScenesInGame);
+      int nextSceneIndex = currentSceneIndex + 1;
+      print(nextSceneIndex);
+      if(nextSceneIndex == numberOfScenesInGame)
+      {
+      
+        restartLevel();
+      }
+      else
+      {
+        SceneManager.LoadScene(nextSceneIndex);
+      }
+
+
     }
 
     private void thrust()
